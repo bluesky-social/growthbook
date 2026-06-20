@@ -549,9 +549,9 @@ jupyterlab-server==2.27.3 ; python_full_version >= "3.9.4" and python_version < 
 jupyterlab-widgets==3.0.15 ; python_full_version >= "3.9.4" and python_version < "4.0" \
     --hash=sha256:2920888a0c2922351a9202817957a68c07d99673504d6cd37345299e971bb08b \
     --hash=sha256:d59023d7d7ef71400d51e6fee9a88867f6e65e10a4201605d2d7f3e8f012a31c
-jupyterlab==4.4.6 ; python_full_version >= "3.9.4" and python_version < "4.0" \
-    --hash=sha256:e0b720ff5392846bdbc01745f32f29f4d001c071a4bff94d8b516ba89b5a4157 \
-    --hash=sha256:e877e930f46dde2e3ee9da36a935c6cd4fdb15aa7440519d0fde696f9fadb833
+jupyterlab==4.5.9 ; python_full_version >= "3.9.4" and python_version < "4.0" \
+    --hash=sha256:5ff0f908e8ac0afbed32b106fdef360f101c0a6654d1bf4a81e98a293ae1b336 \
+    --hash=sha256:dd79a073fecae7a39066ea99e4627ed6c76269ac926e95a810e1e1df6358d865
 keyring==25.6.0 ; python_full_version >= "3.9.4" and python_version < "4.0" \
     --hash=sha256:0b39998aa941431eb3d9b0d4b2460bc773b9df6fed7621c2dfb291a7e0187a66 \
     --hash=sha256:552a3f7af126ece7ed5c89753650eec89c7eaae8617d0aa4d9ad2b75111266bd
