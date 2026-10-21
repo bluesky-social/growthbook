@@ -1,0 +1,13 @@
+# Temporary runtime-only patch while the upstream DHI-based image trails Node's security release.
+FROM node:24.22.1-bookworm-slim@sha256:55fb5f5a527ea2c5c4a95f963e48ef90aa38c7b346054fdc8ee9957a2b55d205 AS patched-node
+FROM growthbook/growthbook:git-d5d5772@sha256:06e0ae402a2ae3e5fef49b98d7625c51443b07586777a3ed81a590e04040d1a0
+
+COPY --from=patched-node --chmod=0755 /usr/local/bin/node /opt/node-security/node
+USER root
+# DHI's launcher is a symlink; remove its old target as well so it cannot bypass the patched runtime.
+RUN ["/opt/node-security/node", "-e", "const fs = require('node:fs'); const launcher = '/usr/local/bin/node'; const previous = fs.realpathSync(launcher); fs.unlinkSync(launcher); fs.symlinkSync('/opt/node-security/node', launcher); if (previous !== launcher) fs.unlinkSync(previous);"]
+ENV NODE_VERSION=24.22.1
+USER 1000
+RUN ["/usr/local/bin/node", "-e", "require('node:assert/strict').equal(process.versions.node, '24.22.1'); require('./packages/back-end/node_modules/kerberos'); require('./packages/back-end/node_modules/isolated-vm');"]
+LABEL org.opencontainers.image.source="https://github.com/bluesky-social/growthbook" \
+      org.opencontainers.image.description="Bluesky GrowthBook d5d577286 with Node 24.22.1 security fixes"
